@@ -115,7 +115,8 @@ def processFacebookPageFeedStatus(status):
     status_author_id = "-1"
     try:
         status_author = unicode_decode(status['from']['name'])
-        status_author_id = unicode_decode(status['from']['id'])
+        status_author_id = status['from']['id']
+        print (status_author_id, status['from']['id'])
     except Exception as e:
         pass
     
@@ -130,7 +131,7 @@ def processFacebookPageFeedStatus(status):
     # print("---------------")
     # print(status)
     # print("---------------")
-    return (status_id, status_message, status_author, status_author_id, link_name, status_type,
+    return (status_id, status_message, status_author, "'" + str(status_author_id) +"'", link_name, status_type,
             status_link, status_published, num_reactions, num_comments, num_shares), status['reactions']['data']
 
 
